@@ -18,7 +18,7 @@ import { ChangeGreeting } from "./ChangeGreeting";
 import { TransactionErrorMessage } from "./TransactionErrorMessage";
 import { WaitingForTransactionMessage } from "./WaitingForTransactionMessage";
 
-// This is the Hardhat Network id, you might change it in the hardhat.config.js
+// This is the Hardhat Network id, you might change it in the hardhat.config.ts
 // Here's a list of network ids https://docs.metamask.io/guide/ethereum-provider.html#properties
 // to use when deploying to other networks.
 const HARDHAT_NETWORK_ID = '31337';

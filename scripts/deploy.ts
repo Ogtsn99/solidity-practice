@@ -1,8 +1,11 @@
-const hre = require("hardhat");
+import { HardhatRuntimeEnvironment } from "hardhat/types";
+declare var ethers: any;
+
+const hre:HardhatRuntimeEnvironment = require("hardhat");
 
 async function main() {
   // This is just a convenience check
-  if (network.name === "hardhat") {
+  if (hre.network.name === "hardhat") {
     console.warn(
       "You are trying to deploy a contract to the Hardhat Network, which" +
       "gets automatically created and destroyed every time. Use the Hardhat" +
@@ -19,7 +22,7 @@ async function main() {
 
   console.log("Account balance:", (await deployer.getBalance()).toString());
 
-  const Greeter = await hre.ethers.getContractFactory("Greeter");
+  const Greeter = await ethers.getContractFactory("Greeter");
   const greeter = await Greeter.deploy("hello, hardhat!");
 
   await greeter.deployed();
@@ -30,7 +33,7 @@ async function main() {
   saveFrontendFiles(greeter);
 }
 
-function saveFrontendFiles(greeter) {
+function saveFrontendFiles(greeter: any) {
   const fs = require("fs");
   const contractsDir = __dirname + "/../frontend/src/contracts";
 
@@ -42,8 +45,8 @@ function saveFrontendFiles(greeter) {
     contractsDir + "/contract-address.json",
     JSON.stringify({ Greeter: greeter.address }, undefined, 2)
   );
-
-  const GreeterArtifact = artifacts.readArtifactSync("Greeter");
+  
+  const GreeterArtifact = hre.artifacts.readArtifactSync("Greeter");
 
   fs.writeFileSync(
     contractsDir + "/Greeter.json",

@@ -2,7 +2,7 @@ const fs = require("fs");
 
 task("faucet", "Sends ETH to an address")
 	.addPositionalParam("receiver", "The address that will receive them")
-	.setAction(async (receiver) => {
+	.setAction(async ({ receiver }) => {
 		if (network.name === "hardhat") {
 			console.warn(
 				"You are running the faucet task with Hardhat network, which" +
@@ -30,11 +30,11 @@ task("faucet", "Sends ETH to an address")
 		const [sender] = await ethers.getSigners();
 
 		const tx = await sender.sendTransaction({
-			to: '0x70997970c51812dc3a010c7d01b50e0d17dc79c8',
+			to: receiver,
 			value: ethers.constants.WeiPerEther,
 		});
 
 		await tx.wait();
 
-		console.log(`Transferred 1 ETH ${receiver}`);
+		console.log(`Transferred 1 ETH to ${receiver}`);
 	})

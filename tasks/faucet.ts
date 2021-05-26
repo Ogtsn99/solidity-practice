@@ -37,6 +37,5 @@ task("faucet", "Sends ETH to an address")
     } else {
       console.log(`Transferred 1 ETH to ${receiver}`);
     }
-
     
   })

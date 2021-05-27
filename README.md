@@ -19,4 +19,4 @@
   4. Connect Walletを押す
   5. 最初はhello, hardhat!になっているはず。Change Greeting
      の下のフォームにnew greetingを入れてenter
-  6. ガス代を払ってgreetingが変わっていたら成功!
+  6. ガス代を払ってgreetingが変わっていたら成功!(できない場合は設定->詳細からアカウントのリセットを試してみると良いです)
